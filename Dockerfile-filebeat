@@ -1,0 +1,6 @@
+FROM debian:stretch
+COPY ./certs /certs
+ADD ./filebeat.tar.gz /
+COPY ./filebeat.yml /filebeat-5.1.2-linux-x86_64/
+WORKDIR /filebeat-5.1.2-linux-x86_64
+ENTRYPOINT ./filebeat -e -c filebeat.yml -v

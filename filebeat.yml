@@ -1,0 +1,22 @@
+filebeat:
+  prospectors:
+    - paths:
+        - /var/log/auth.log
+        - /var/log/syslog
+      input_type: log
+      document_type: syslog
+  registry_file: /var/lib/filebeat/registry
+
+output:
+  logstash:
+    hosts: ["logstash:5044"]
+    bulk_max_size: 1024
+#    tls:
+#      certificate_authorities: ["/certs/logstash.crt"]
+#      insecure: true
+
+shipper:
+
+logging:
+  files:
+    rotateeverybytes: 10485760
